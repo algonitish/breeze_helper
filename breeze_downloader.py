@@ -97,9 +97,9 @@ def split_dates(dtm_from:datetime, dtm_to:datetime, int_interval:int) -> list:
     print('done with batching.') #!debug
     return list_batched_dates
 
-tab1_layout =  [[sg.Text('APP KEY'), sg.InputText(default_text='7@63mU944915526816n9lk80650Y5110', key='APP_KEY')], 
-            [sg.Text('SECRET KEY'), sg.InputText(default_text='8d5527490v99fZ6u399w2^h78862`23N',key='SECRET_KEY')],
-            [sg.Text('SESSION ID'), sg.InputText(default_text='38897589', key='SESSION_ID')],
+tab1_layout =  [[sg.Text('APP KEY'), sg.InputText(default_text='', key='APP_KEY')], 
+            [sg.Text('SECRET KEY'), sg.InputText(default_text='',key='SECRET_KEY')],
+            [sg.Text('SESSION ID'), sg.InputText(default_text='', key='SESSION_ID')],
             [sg.Button('CONNECT'), sg.Button('DISCONNECT')]
             ]
 
