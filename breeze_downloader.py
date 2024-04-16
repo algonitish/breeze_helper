@@ -10,7 +10,6 @@ from os import getcwd, name
 from dateparser import parse
 import yfinance as yf
 from itertools import batched
-import sys
 
 '''create list of secureities'''
 resp = urlopen("https://directlink.icicidirect.com/NewSecurityMaster/SecurityMaster.zip")
@@ -190,6 +189,7 @@ while True:
                     print(len(list_hist_data))
                 else:
                     print('no data received. breaking.') #!debug
+				int_request_count+=1
             print('dowloading finished.')  #!debug
             if len(list_hist_data) > 0:
                 file_data = getcwd()+ ('\\' if name =='nt' else '//') + dict_request.get('stock_code')+'_'+ dict_request.get('interval') + '_' +\
