@@ -13,7 +13,12 @@ While downloading historical data over long peropds of time, we need to write a 
 5. Click validate to do a sanity check
 6. If valid, click download and wait for it to finish
 
-# How it works
+## How it works
+1. gets ^NSEI/NIFTY50 1day data from Yahoo! Finance for a reference list of dates
+2. batches the list of dates into lengths long enough to fetch in a single call
+3. truncates the list of list of dates into start- and end- dates
+4. fetches data in a loop, appending to a temporary list
+5. list of fetched data is converted to a pandas dataframe which is saved as a csv in the same folder as the breeze_downloader.py file
 
 # AIMS
 1. DONE: A continuous downloader to download large amounts of data given Breeze's limitation of 1000 lines of data per request, and store everything in a single CSV file. NOTE: 1000 has been hard-coded into this script, so in case of future changes, it should be updated.
