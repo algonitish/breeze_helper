@@ -1,6 +1,10 @@
 # DISCLAIMER!
 This code is purely for personal use, developed as a hobby/utility for myself. This has no official sanction by ICICIdirect or ICICI Securities, and they bear no responsibility for any bugs, failures, or issues in this code.
 
+## Current limitations
+1. works only for NSE Futures and Options (i.e. not BSE, NSE (stocks or currency))
+2. Does not work for second level data
+
 # USAGE
 ## Purpose
 While downloading historical data over long peropds of time, we need to write a loop. This loop must also be mindful of weekends and holidays in order to be efficient. And most such loops are repetitive, with small changes. With the availability of PySimpleGUI it became possible to automate this task to a large extent. Later versions will also have futures and option chain downloading, as well as a permanent database to avoid duplication.
