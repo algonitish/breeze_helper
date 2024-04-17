@@ -64,7 +64,6 @@ def validate_request(**kwargs) -> bool:
         bool_request_validity= True
         return bool_request_validity
 
-# 2016-01-01 12:11:13 2023-01-01 12:10:53
 def split_dates(dtm_from:datetime, dtm_to:datetime, int_interval:int) -> list:
     '''
     input: dt_from and dt_to must be strings in 'YYYY-MM-DD' format
@@ -85,13 +84,6 @@ def split_dates(dtm_from:datetime, dtm_to:datetime, int_interval:int) -> list:
     int_days_per_batch = int(1000/int_interval) #int(number of days * (candles/day))/(max candles in 1 call) +1
     list_batched_dates = list(batched(list_dates, int_days_per_batch))
     list_batched_dates = [[item[0], item[-1]] for item in list_batched_dates]
-    #! start debug
-    file_data = getcwd()+ ('\\' if name =='nt' else '//') + 'BATCHED' + dict_request.get('stock_code')+'_'+ datetime.now().isoformat().replace(':', '-') +'.csv'
-    file = open(file_data,'w')
-    for item in list_batched_dates:
-        file.write(str(item)+"\n")
-    file.close()
-    #! end debug
     list_batched_dates = [[item[0].replace(hour=0, minute=0, second=0), item[-1].replace(hour=23, minute=59, second=59)] for item in list_batched_dates]
     print('done with batching.') #!debug
     return list_batched_dates
