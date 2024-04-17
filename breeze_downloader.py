@@ -100,13 +100,13 @@ tab3_layout = [ [sg.Text('Path: '), sg.InputText(default_text=getcwd(), key='-pa
                     sg.CalendarButton(button_text='Pick Date', target='-FROM_DATE-', default_date_m_d_y=(date.today().month, date.today().day-1, date.today().year))],
                 [sg.Text('To Date: '), sg.Input(default_text='', key='-TO_DATE-'), \
                     sg.CalendarButton(button_text='Pick Date', target='-TO_DATE-', default_date_m_d_y=(date.today().month, date.today().day, date.today().year))],
-                [sg.Text('Exchange: '), sg.OptionMenu(values=['NSE', 'NFO', 'BSE', 'BSO', 'MCX'], key='-EXCHANGE-')],
-                [sg.Text('Product: '), sg.OptionMenu(values=['CASH', 'FUTURES', 'OPTIONS'], key='-PRODUCT-')],
-                [sg.Text('Interval: '), sg.OptionMenu(values=[ "1second", "1minute", "5minute", "30minute", "1day"], default_value='1minute', key='-INTERVAL-')],               
+                [sg.Text('Exchange: '), sg.DropDown(values=['NSE', 'NFO', 'BSE', 'BSO', 'MCX'], key='-EXCHANGE-')],
+                [sg.Text('Product: '), sg.DropDown(values=['CASH', 'FUTURES', 'OPTIONS'], key='-PRODUCT-')],
+                [sg.Text('Interval: '), sg.DropDown(values=["1minute", "5minute", "30minute", "1day"], default_value='1minute', key='-INTERVAL-')],               
                 [sg.Text('Expiry Date: '), sg.Input(default_text='', key='-EXPIRY-'), sg.CalendarButton(button_text='Pick Date', target='-EXPIRY-')],
                 [sg.Text('Strike: '), sg.Input(default_text='0', key='-STRIKE-')],
-                [sg.Text('Right: '), sg.OptionMenu(values=['CALL', 'PUT'], key='-RIGHT-')],
-                [sg.Button(button_text='VALIDATE', key='-VALIDATE-')], [sg.Button(button_text='DOWNLOAD', key='-DOWNLOAD-')]                
+                [sg.Text('Right: '), sg.DropDown(values=['CALL', 'PUT'], key='-RIGHT-')],
+                [sg.Button(button_text='VALIDATE', key='-VALIDATE-'), sg.Button(button_text='DOWNLOAD', key='-DOWNLOAD-')]                
              ]
 
 layout = [[sg.TabGroup([[sg.Tab('Connect', tab1_layout), sg.Tab('Get Data', tab3_layout)]])],
