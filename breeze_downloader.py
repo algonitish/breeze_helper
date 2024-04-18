@@ -10,7 +10,17 @@ from os import getcwd, name
 from dateparser import parse
 import yfinance as yf
 from itertools import batched
+import configparser
 
+config=configparser.ConfigParser(interpolation=None)
+try:
+    config.read(getcwd() + ('\\' if name =='nt' else '//') + 'config.cfg')
+    str_apikey = config['KEYS']['APIKEY']
+    str_secretkey = config['KEYS']['SECRETKEY']
+    str_sessionid = config['KEYS']['SESSIONID']
+except Exception as e:
+    print("couldn't fetch key configurations. please check values in config.cfg file.")
+    print(e)
 '''create list of secureities'''
 resp = urlopen("https://directlink.icicidirect.com/NewSecurityMaster/SecurityMaster.zip")
 myzip = ZipFile(BytesIO(resp.read()))
@@ -88,9 +98,9 @@ def split_dates(dtm_from:datetime, dtm_to:datetime, int_interval:int) -> list:
     print('done with batching.') #!debug
     return list_batched_dates
 
-tab1_layout =  [[sg.Text('APP KEY'), sg.InputText(default_text='', key='APP_KEY')], 
-            [sg.Text('SECRET KEY'), sg.InputText(default_text='',key='SECRET_KEY')],
-            [sg.Text('SESSION ID'), sg.InputText(default_text='', key='SESSION_ID')],
+tab1_layout =  [[sg.Text('APP KEY'), sg.InputText(default_text=str_apikey, key='APP_KEY')], 
+            [sg.Text('SECRET KEY'), sg.InputText(default_text=str_secretkey,key='SECRET_KEY')],
+            [sg.Text('SESSION ID'), sg.InputText(default_text=str_sessionid, key='SESSION_ID')],
             [sg.Button('CONNECT'), sg.Button('DISCONNECT')]
             ]
 
@@ -181,7 +191,7 @@ while True:
                     print(len(list_hist_data))
                 else:
                     print('no data received. breaking.') #!debug
-				int_request_count+=1
+            int_request_count+=1
             print('dowloading finished.')  #!debug
             if len(list_hist_data) > 0:
                 file_data = getcwd()+ ('\\' if name =='nt' else '//') + dict_request.get('stock_code')+'_'+ dict_request.get('interval') + '_' +\
