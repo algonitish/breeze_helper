@@ -12,7 +12,7 @@ While downloading historical data over long peropds of time, we need to write a 
 ## To use:
 1. Download the breeze_downloader.py into the folder where you want to store the data
 2. Run file
-3. Give your credentials and click connect
+3. Give your credentials and click connect [*18/4/24: credentials can be saved in the config.cfg file*]
 4. Once connnected, go to second tab and enter contract details and from- and to- date
 5. Click validate to do a sanity check
 6. If valid, click download and wait for it to finish
